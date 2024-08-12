@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Main Program{% endblock title %}
+
+{% block content %}
+    Circuit List
+    <br>
+    {% if qs %}
+        <ul>
+        {% for obj in qs  %}
+            
+                <li> 
+                    {{obj.circuit_id}} - {{obj.circuit_description}} 
+                    , Status: {{obj.circuit_status}}
+                    , Cycles: {{obj.num_cycles}}
+                    , Events per Cycle : {{obj.events_per_cycles}}
+                    , Event Duration : {{obj.event_duration}}
+                    , Random: {{obj.random}}
+                    , Mode: {{obj.circuit_mode}}
+                </li>
+
+        {% endfor %}
+    </ul>
+    {% else %}
+        there are no circuits in data base
+    {% endif %}
+
+    {% endblock content %}
+
