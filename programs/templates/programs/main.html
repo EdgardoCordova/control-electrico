@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Program Program{% endblock title %}
+
+{% block content %}
+    Description / Progrmas List
+    <br>
+    Suma eventos: {{ sum_events }}
+    <br>
+    {% if qs1 %}
+    Descriptions:
+        <ul>
+        {% for obj in qs1 %}
+            <li> 
+                Circuit ID: {{obj.circuit_id}},  Description: {{obj.circuit_description}},  Status: {{obj.circuit_status}} 
+                ,  Num Cycles: {{obj.num_cycles}},  Events per Cycle: {{obj.events_per_cycle}},  Event Duration: {{obj.event_duration}} 
+                ,  Random: {{obj.random}},  Circuit Mode: {{obj.circuit_mode}}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        there are no descriptions in data base
+    {% endif %}
+    {% if qs2 %}
+    Programs:
+        <ul>
+        {% for obj in qs2 %}
+            {% if not obj.circuit_status %}
+                <li> 
+                    Slug: {{obj.slug}} -  Duration: {{obj.event_duration}},  Random: {{obj.random}},  Mode: {{obj.circuit_mode}} 
+                </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    {% else %}
+        there are no programs in data base
+    {% endif %}
+
+    a: {{ a }}
+
+    {% endblock content %}
+

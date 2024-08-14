@@ -40,6 +40,9 @@ INSTALLED_APPS = [
 
     # my apps
     'descriptions',
+    'programs',
+    'controls',
+    'downloads',
 
     # third party apps
 
