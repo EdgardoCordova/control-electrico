@@ -1,24 +1,26 @@
 from django.shortcuts import render
 from .models import crc_DES
+from programs.models import crc_PROG
 import random 
 
 # este programa lo que hace es completar una tabla inicial
 
 def descriptions_list_view(request):
-    qs = crc_DES.objects.all()
+    qs1 = crc_DES.objects.all()
     context = {
-        'qs': qs,
+        'qs': qs1,
     }
     return render(request, 'main.html', context)
 
 # inicializacion de la tabla crc_DES
-def crc_DES_init_view(request):
-    # delete table crc_DES
-    qs = crc_DES.objects.all()
-
-    if qs:
+def batch_crc_DES_view(request):
+    qs1 = crc_DES.objects.all()
+  
+    # if there is a table crc_DES, delete it
+    if qs1:
         crc_DES.objects.all().delete()
-    
+   
+
     crc_DES.objects.create(
         circuit_id=1001, circuit_description="luces camping",circuit_status =True,num_cycles= 1,
         events_per_cycle=1, event_duration=240,random=False,circuit_mode="PROG")
@@ -38,9 +40,9 @@ def crc_DES_init_view(request):
         circuit_id=1006, circuit_description="luces de emergencia ",circuit_status =True,num_cycles= 2,
         events_per_cycle=3, event_duration=5,random=True,circuit_mode="PROG")
   
-    qs = crc_DES.objects.all()
+    qs1 = crc_DES.objects.all()
     context = {
-        'qs': qs,
+        'qs1': qs1,
     }
     return render(request, 'main.html', context)            
 

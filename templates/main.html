@@ -5,9 +5,9 @@
 {% block content %}
     Circuit List
     <br>
-    {% if qs %}
+    {% if qs1 %}
         <ul>
-        {% for obj in qs  %}
+        {% for obj in qs1  %}
             
                 <li> 
                     {{obj.circuit_id}} - {{obj.circuit_description}} 
