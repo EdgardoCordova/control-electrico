@@ -9,7 +9,7 @@ from .views import (
 app_name = 'descriptions'
 
 urlpatterns = [
-    path('', descriptions_list_view),
-    path('batch_crc_DES/', batch_crc_DES_view),
+    path('', descriptions_list_view, name='main'),
+    path('batch_crc_DES/', batch_crc_DES_view,name='batch'),
     
 ]

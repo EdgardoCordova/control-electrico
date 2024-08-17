@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}Program Program{% endblock title %}
+{% block title %}Programs{% endblock title %}
 
 {% block content %}
     Description / Programs List
     <br>
-    Suma eventos: {{ sum_events }}
+  
     <br>
     {% if qs1 %}
     Descriptions:
@@ -15,6 +15,7 @@
                 Circuit ID: {{obj.circuit_id}},  Description: {{obj.circuit_description}},  Status: {{obj.circuit_status}} 
                 ,  Num Cycles: {{obj.num_cycles}},  Events per Cycle: {{obj.events_per_cycle}},  Event Duration: {{obj.event_duration}} 
                 ,  Random: {{obj.random}},  Circuit Mode: {{obj.circuit_mode}}
+                
             </li>
         {% endfor %}
         </ul>
@@ -22,12 +23,13 @@
         there are no descriptions in data base
     {% endif %}
     {% if qs2 %}
-    Programs:
+    Programs (solo habilitados):
         <ul>
         {% for obj in qs2 %}
             {% if not obj.circuit_status %}
                 <li> 
-                    Slug: {{obj.slug}} -  Duration: {{obj.event_duration}},  Random: {{obj.random}},  Mode: {{obj.circuit_mode}} 
+                    Slug: {{obj.slug}} - Description: {{obj.circuit_id.circuit_description}},  Duration: {{obj.event_duration}},  Random: {{obj.random}},  Mode: {{obj.circuit_mode}} 
+                    <a href="{{ obj.get_absolute_url }}" class="btn btn-danger">Detail</a>
                 </li>
             {% endif %}
         {% endfor %}
@@ -36,7 +38,16 @@
         there are no programs in data base
     {% endif %}
 
-    a: {{ a }}
+    reverse relationship:
+
+    1002: {{ mode }}
+    <ul>
+        {% for instance in related_circuits %}
+        <li>
+            {{ instance.slug }}
+        </li>
+        {% endfor %}
+    </ul>
 
     {% endblock content %}
 

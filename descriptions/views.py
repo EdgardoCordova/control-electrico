@@ -39,7 +39,7 @@ def batch_crc_DES_view(request):
     crc_DES.objects.create(
         circuit_id=1006, circuit_description="luces de emergencia ",circuit_status =True,num_cycles= 2,
         events_per_cycle=3, event_duration=5,random=True,circuit_mode="PROG")
-  
+
     qs1 = crc_DES.objects.all()
     context = {
         'qs1': qs1,
