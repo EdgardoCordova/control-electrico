@@ -7,7 +7,14 @@
     <br>
     <br>
      {% if obj %}
-          Descripcion : {{ obj.slug}} - {{ obj.circuit_id.circuit_description }}
+          Descripcion : {{ obj.slug}} - {{ obj.circuit_id.circuit_description }}  Mode:{{ mode }}
+    <ul>
+        {% for instance in related_circuits %}
+        <li>
+            {{ instance.slug }}
+        </li>
+        {% endfor %}
+    </ul>
           
      {% endif %}
      <br>
