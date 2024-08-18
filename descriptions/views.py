@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import crc_DES
 from programs.models import crc_PROG
@@ -5,10 +6,19 @@ import random
 
 # este programa lo que hace es completar una tabla inicial
 
+#def change_theme(request):
+#    if 'is_dark_mode' in request.session:
+#        request.session['is_dark_mode'] = not request.session['is_dark_mode']
+#    else:
+#        request.session['is_dark_mode'] = False
+
+#    return HttpResponseRedirect(request.META.get('HTTP_REFERER')) # este comando regresa a la misma pagina
+
 def descriptions_list_view(request):
     qs1 = crc_DES.objects.all()
+    
     context = {
-        'qs': qs1,
+        'qs1': qs1,
     }
     return render(request, 'main.html', context)
 
